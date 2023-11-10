@@ -1,0 +1,143 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block style %} {% static 'main/css/style.css' %} {% endblock %}
+{% block title %} EventZone {% endblock %}
+{% block content %}
+{% include 'main/navbar.html' %}
+<section class="info__title page__1">
+
+    <div class="wrapper__page__1">
+
+        <div class="page__under">
+
+            <div class="page__logo">
+
+                Event<span style="color: #0066CC;">Zone</span>: Зона вашего комфорта
+
+            </div>
+
+            <div class="page__logo__desc">
+
+                Оптимальное решение для организации мероприятий.
+
+            </div>
+
+        </div>
+
+    <div class="wrapper__cards">
+
+        <a href="#">
+
+            <div class="cards__header">
+
+                <div class="cards__title">
+
+                    <p>Агенства</p>
+
+                </div>
+
+                <div class="cards__middle">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis error ad saepe excepturi quibusdam, dignissimos sequi.</p>
+                </div>
+
+                <div class="cards__body">
+                    <p>Перейти к списку Event-агенств</p>
+                </div>
+
+            </div>
+
+        </a>
+
+        <a href="#">
+
+            <div class="cards__header">
+
+                <div class="cards__title">
+
+                    <p class="info__important">Готовые решения</p>
+
+                </div>
+
+                <div class="cards__middle">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis error ad saepe excepturi quibusdam, dignissimos sequi.</p>
+                </div>
+
+                <div class="cards__body">
+                    <p>Перейти к списку решений</p>
+                </div>
+
+            </div>
+
+        </a>
+
+        <a href="#">
+
+            <div class="cards__header">
+
+                <div class="cards__title reshala">
+
+                    <p>Подрячики</p>
+
+                </div>
+
+                <div class="cards__middle">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora perspiciatis error ad saepe excepturi quibusdam, dignissimos sequi.</p>
+                </div>
+
+
+                <div class="cards__body">
+                    <p>Перейти к списку подрядчиков</p>
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    </div>
+
+        <div class="page__back__1">
+
+                <p class="ABOUT__SECTION">О НАС</p>
+
+         </div>
+
+</section>
+
+<section class="info__title page__2">
+
+    <div class="wrapper section__2">
+
+        <div class="left__side">
+
+            <div class="left__wrapper">
+
+                <div class="left__image__section">
+
+                    <img src="{% static 'main/img/logo.png' %}" width="300" height="300">
+
+                </div>
+                <div class="left__desc">
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, delectus suscipit corporis quae eius saepe rerum impedit vel sed quis nesciunt fuga modi facilis, repellat sequi doloribus molestiae recusandae dolores!</p>
+
+                </div>
+
+                <a href="#" class="FAQ"><div class="left__button">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</div></a>
+
+            </div>
+
+        </div>
+        <div class="right__side">
+
+                <img src="{% static 'main/img/vibe.jpg' %}">
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include 'main/footer.html' %}
+{% endblock %}

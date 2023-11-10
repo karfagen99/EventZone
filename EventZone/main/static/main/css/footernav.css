@@ -1,0 +1,142 @@
+/* navbar */
+.home {
+
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    background: #000000;
+}
+
+.background__header img{
+
+    width: 100%;
+
+}
+
+.header__logo {
+
+
+    max-width: 100px;
+    text-align: center;
+    margin-left: 6px;
+
+}
+
+
+.header__navigation {
+    top: -485px;
+    width: 900px;
+    margin: 0 auto;
+
+
+}
+
+.header__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    color: #e4e4e4;
+    font-size: 9px;
+}
+
+.header__nav__list li{
+    display: inline;
+    margin: 6px;
+
+}
+
+.header__nav__list a:hover{
+    color: #fff;
+    border-bottom: 2px solid #E9C400;
+}
+
+.header__nav__list a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    color: #d8d8d8;
+    transition: all 0.3s ease;
+}
+
+.header__nav__list li {
+    list-style-type: none;
+}
+/* footer */
+
+.footer {
+    background-color: #000000;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+    font-weight: bold;
+    color: #fafaff;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 500px;
+ }
+
+ .footer__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 5%;
+ }
+
+ .footer__item {
+    text-align: left;
+    padding: 0;
+ }
+
+ .footer__follow__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    margin-top: 80px;
+ }
+
+
+ ul a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #d8d8d8;
+    font-weight: 500;
+
+ }
+
+ li {
+    list-style: none;
+ }
+
+ .li__items.name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+ }
+
+ .li__items a:hover {
+ color: #fff;
+    border-bottom: 2px solid #E9C400;
+transition: all 0.3s ease;
+ }
+
+ .follow__us img {
+    margin: 15px 5px auto 5px;
+    transition: all 0.3s ease;
+ }
+ .follow__us img:hover{
+     -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+ }
+
+ a.FAQ {
+    text-decoration: none;
+ }
