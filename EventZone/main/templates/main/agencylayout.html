@@ -1,0 +1,11 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block style %} {% static 'main/css/agencylayout.css' %} {% endblock %}
+{% block title %} Агентство {% endblock %}
+{% block content%}
+{% include 'main/navbar.html' %}
+
+
+
+{% include 'main/footer.html' %}
+{% endblock %}

@@ -34,56 +34,27 @@
     </div>
 
     <div class="wrapper__main__page">
+
         <section class="breweries" id="breweries">
     <ul>
-      <li>
-        <figure>
-          <!-- Photo by Quentin Dr on Unsplash -->
-          <img src="https://images.unsplash.com/photo-1471421298428-1513ab720a8e" alt="Several hands holding beer glasses">
-          <figcaption><h3>Название агенства</h3></figcaption>
-        </figure>
-        <p>
-          Made in the interiors of collapsing stars star stuff harvesting star light venture billions upon billions Drake Equation brain is the seed of intelligence?
-        </p>
-          <div class="info__agency">
-              <div class="budget"><span class="price">Цена: </span> 100$</div>
-              <div class="amount__people"><span class="amount">Кол-во человек: </span> 40</div>
-          </div>
 
-        <button class="button card">Подробнее</button>
-      </li>
+        {% for item in Agency %}
       <li>
         <figure>
           <!-- Photo by Drew Farwell on Unsplash -->
-          <img src="https://images.unsplash.com/photo-1513309914637-65c20a5962e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80" alt="Several friends doing a toast">
-          <figcaption><h3>Drake Equation</h3></figcaption>
+          <img src="{{item.picture.url}}" alt="Several friends doing a toast">
+          <figcaption><h3>{{item.title}}</h3></figcaption>
         </figure>
         <p>
-          Another world citizens of distant epochs from which we spring descended from astronomers Orion's sword shores of the cosmic ocean.
+            {{item.short_description}}
         </p>
             <div class="info__agency">
-              <div class="budget"><span class="price">Цена: </span> 60$</div>
-              <div class="amount__people"><span class="amount">Кол-во человек: </span> 35</div>
+              <div class="budget"><span class="price">Цена: </span> {{item.price}} $</div>
+              <div class="amount__people"><span class="amount">Кол-во человек: </span> {{item.people}}</div>
           </div>
-        <button class="button card">Подробнее</button>
+       <a href="/agencies/{{item.pk}}"><button class="button card">Подробнее</button></a>
       </li>
-      <li>
-        <figure>
-          <!-- Photo by Rawpixel on Unsplash -->
-          <img src="https://images.unsplash.com/photo-1535359056830-d4badde79747?ixlib=rb-1.2.1&auto=format&fit=crop&w=3402&q=80" alt="Three different glasses of beer">
-          <figcaption><h3>Vast cosmic arena</h3></figcaption>
-        </figure>
-        <p>
-          Galaxies the ash of stellar alchemy prime number science inconspicuous motes of rock and gas brain is the seed of intelligence.
-        </p>
-          <div class="info__agency">
-              <div class="budget"><span class="price">Цена: </span> 50$</div>
-              <div class="amount__people"><span class="amount">Кол-во человек: </span> 20</div>
-          </div>
-          <button class="button card">Подробнее</button>
-      </li>
-
-
+        {% endfor %}
 
 
     </ul>
