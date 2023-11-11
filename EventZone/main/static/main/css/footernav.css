@@ -10,6 +10,11 @@
     background: #000000;
 }
 
+.wrapper {
+    width: 1150px;
+    margin: 0 auto;
+}
+
 .background__header img{
 
     width: 100%;

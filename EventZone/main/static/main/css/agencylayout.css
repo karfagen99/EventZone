@@ -1,0 +1,138 @@
+
+body {
+    background-color: #EAEDED;
+
+    margin: 0;
+
+}
+
+.container {
+    width:1150px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+.wrapper__agency__layout {
+
+    background-color: #EAEDED;
+}
+
+/*AGENCY NAV*/
+
+.agency__info {
+
+    margin-top: 25px;
+
+}
+
+.agency__name {
+
+        font-weight: 600;
+        font-size: 40px;
+}
+
+.agency__card {
+    display: flex;
+    margin-top: 50px;
+
+}
+
+.agency__desc {
+    margin-left: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    width: 560px;
+}
+
+.agency__gallery {
+    margin-top: 55px;
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    justify-content: space-around;
+}
+
+.price__info__right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery__name, .price__name {
+    margin-bottom: 35px;
+    font-size: 30px;
+    font-weight: 550;
+}
+
+.price__count {
+
+
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.price__desc {
+    width: 450px;
+    margin-left: 30px;
+
+}
+
+.hr-double {
+    margin-right: 0;
+	padding: 0;
+	height: 1px;
+border: none;
+	border-top: 1px solid #333;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+	width: 150px;
+	align: right;
+}
+
+/*CAROUSEL*/
+
+section.carousel {
+    -webkit-box-shadow: 0px 4px 8px 7px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 0px 4px 8px 7px rgba(34, 60, 80, 0.2);
+box-shadow: 0px 4px 8px 7px rgba(34, 60, 80, 0.2);
+}
+
+ul.carousel {
+
+  display: flex;
+  list-style: none;
+  max-width: 600px;
+  margin-block: 2rem;
+  margin-inline: auto;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+
+}
+
+
+
+li.carousel__item {
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 3rem;
+  aspect-ratio: 2/1;
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+li.carousel__item img {
+    height: 500px;
+}
+
+
+li.carousel__item:nth-child(odd) {
+  background-color: salmon;
+}
+
+li.carousel__item:nth-child(even) {
+  background-color: rebeccapurple;
+
+}
