@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+}
+
+.wrapper__reg {
+    display: flex;
+    height: 1000px;
+}
+
+.left__wrap {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.left__wrap img {
+    transform: translate(-15%, -50%);
+}
+
+.right__wrap {
+    width: 60%;
+    height: 100%;
+    background-color: #EAEDED;
+    display: flex;
+    justify-content: center;
+
+}
+
+.reg__wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.options__block {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.options__block label {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+
+
+.menu__wrap {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.reg__info {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 25px 0px 25px 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logbtn.reg {
+    border-radius: 2px;
+
+}
+
+

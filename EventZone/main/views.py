@@ -13,3 +13,13 @@ def agencies(request):
 def agencieslayout(request,pk):
     Agency = get_object_or_404(agency, pk= pk)
     return render(request, 'main/agencylayout.html', {'Agency': Agency})
+
+def registration(request):
+    return render(request, 'main/registration.html')
+
+def profile(request):
+    return render(request, 'main/profile.html')
+
+def contacts(request):
+    return render(request, 'main/contacts.html')
+

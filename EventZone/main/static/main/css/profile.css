@@ -1,0 +1,176 @@
+body {
+
+    margin: 0;
+
+}
+
+.wrapper__profile {
+    width: 1150px;
+    margin: 0 auto;
+}
+
+span.boldfont {
+    font-weight: 700;
+}
+
+.events {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    padding: 65px;
+}
+
+/* Профиль */
+
+.profile{
+    margin: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+.profile.username {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.profile.registration__date, .profile.completedevents, .profile.city, .profile.year {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.profile__info {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.avatar {
+    width: 250px; 
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.avatar img {
+    object-fit: contain;
+
+    height: 100%;
+}
+
+.main__information {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+/* Мероприятия */
+
+.breweries {
+    padding: 2rem;
+    margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 1150px;
+
+}
+
+.breweries > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
+  justify-items: center;
+  padding: 0;
+}
+
+.breweries > ul > li {
+-webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+border-radius: 5px;
+background: #FFF;
+  width: 322px;
+  position: relative;
+}
+
+.breweries > ul > li > figure {
+    max-height: 205px;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    margin: 17px;
+}
+
+.breweries > ul > li > figure > img {
+  width: 100%;
+}
+
+.breweries > ul > li > figure > figcaption {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,.7);
+  width: 100%;
+}
+
+.breweries > ul > li > figure > figcaption > h3 {
+  color: white;
+  padding: .75rem;
+  font-size: 1.25rem;
+
+}
+
+.breweries > ul > li > p {
+font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem .75rem;
+    color: #666666;
+    word-break: break-word;
+    max-height: 110px;
+    overflow: overlay;
+    margin-bottom: 10px;
+
+}
+
+.budget {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+
+}
+
+span.price {
+    color: #000000;
+    font-weight: 300;
+}
+
+span.amount {
+    color: #000000;
+}
+
+.info__agency {
+
+    padding: 1rem .75rem;
+    margin-bottom: 55px;
+
+}
+
+.breweries > ul > li > a {
+  padding: .5rem 1rem;
+  margin: .5rem;
+}
+
+.button.card {
+     height: 36px;
+    width: 108px;
+    padding: 2px;
+    background-color: #E9C400;
+    border-radius: 9px;
+    color: white;
+    border: none;
+    float: right;
+    margin: 18px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  } 

@@ -26,7 +26,8 @@
 
     max-width: 100px;
     text-align: center;
-    margin-left: 6px;
+
+    padding: 5px;
 
 }
 
@@ -181,11 +182,21 @@ transition: all 0.3s ease;
 .popup {
     z-index: 1;
     position: fixed;
-    /* visibility: hidden; */
+    visibility: hidden;
     box-shadow: 0px 4px 8px 0px rgba(17, 25, 31, 0.2);
-
+    opacity: 0;
     top: 25%;
     left: 35%;
+    transition: all 0.8s ease 0s;
+    pointer-events: none;
+}
+
+.popup.active{
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transition: 0.5s all;
 
 }
 
@@ -193,6 +204,10 @@ transition: all 0.3s ease;
     width: 500px;
     height: 100%;
  
+}
+.close__popup{
+    text-decoration: none;
+
 }
 
 .popup__wrapper img {
@@ -235,7 +250,8 @@ transition: all 0.3s ease;
 
 .popup__content {
     background-color: #e9e9e9;
-
+    transition: all 0.8s ease 0s;
+    opacity: 1;
     max-width: 800px;
     padding: 30px;
     position: relative;
@@ -243,6 +259,11 @@ transition: all 0.3s ease;
     opacity: 1;
     border-radius: 5px;
     transform: translate(0px, calc(100vh -50%));
+}
+
+.popup__content.active {
+    transition: 0.5s all; 
+    opacity: 1;
 }
 
 
@@ -255,6 +276,9 @@ transition: all 0.3s ease;
 .close__popup {
     position: absolute;
     right: 55px;
+    font-family: 'Montserrat', sans-serif;
+    color: #E9C400;
+    font-size: 20px;
 }
 
 .options__block {
@@ -271,10 +295,10 @@ transition: all 0.3s ease;
 }
 
 .logbtn {
-
+    font-size: 15px;
     height: 36px;
-    width: 150px;
-    padding: 2px;
+    min-width: 150px;
+    padding: 10px;
     background-color: #E9C400;
     border-radius: 9px;
     color: white;

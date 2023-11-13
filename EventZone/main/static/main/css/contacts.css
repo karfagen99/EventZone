@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+}
+
+.wrapper__contacts {
+    width: 1150px;
+    margin: 0 auto ;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+.contacts__text {
+    text-align: center;
+    font-size: 40px;
+    padding: 65px;
+}
+
+.faq__wrapper {
+
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.faq__text{
+    text-align: left;
+    font-size: 38px;
+    padding: 35px;
+    font-weight: 600;
+}
+
+.question__section {
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.answer__section {
+    font-weight: 400;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.send__section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 550px;
+}
+
+.help__section {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.help__text {
+    font-weight: 700;
+    font-size: 40px;
+
+
+}
+
+.text-field__input.faq {
+    width: 520px;
+}
+
+
+.text-field__input.faq.textarea {
+    height: 100px;
+}
+
+.feedback {
+    width: 540px;
+    height: 150px;
+}
+
+
+
