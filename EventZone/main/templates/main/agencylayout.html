@@ -8,10 +8,11 @@
     <div class="wrapper__agency__layout">
         <div class="container">
             <div class="agency__info">
-                <div class="agency__name">Названиа агенства</div>
+                <div class="agency__name">{{Agency.title}}</div>
                 <div class="agency__card">
+<!--                    ТУТ НАДО ПОФИКСИТЬ ФОТО ОНО НЕ ОГРАНИЧЕНО ПО РАЗМЕРУ-->
                         <div class="agency__photo"><img src="{% static 'main/img/agencylogo.png' %}"> </div>
-                        <div class="agency__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum debitis facilis fuga fugiat illo incidunt iusto placeat saepe voluptas voluptatibus</div>
+                        <div class="agency__desc">{{Agency.description}}</div>
                 </div>
             </div>
 
@@ -25,12 +26,9 @@
                         <section class="carousel">
 
                             <ul class="carousel">
-                                <li class="carousel__item"><img src="{%static 'main/img/1.jpg' %}"> </li>
-                                <li class="carousel__item"><img src="{%static 'main/img/2.jpg' %}"></li>
-                                <li class="carousel__item"><img src="{%static 'main/img/3.jpg' %}"></li>
-                                <li class="carousel__item"><img src="{%static 'main/img/4.jpg' %}"></li>
-                                <li class="carousel__item"><img src="{%static 'main/img/5.jpg' %}"></li>
-                                <li class="carousel__item"><img src="{%static 'main/img/6.jpg' %}"></li>
+                                {% for item in Gallery %}
+                                <li class="carousel__item"><img src="{{item.photo.url}}">
+                                {% endfor %}
                             </ul>
 
                         </section>
@@ -42,21 +40,11 @@
                     <div class="price__name">
                         Прайс лист
                     </div>
-
-                    <div class="price__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ea esse eveniet ex, fuga illum iusto modi, mollitia</div>
-                     <div class="price__count">2 000 Р</div>
+                    {% for item in Pricelist %}
+                    <div class="price__desc">{{ item.description }}</div>
+                     <div class="price__count">{{ item.price }} Р</div>
                     <hr class="hr-double">
-
-                    <div class="price__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.m ea esse eveniet ex, fuga illum iusto modi, mollitia</div>
-                     <div class="price__count">24 000 Р</div>
-                    <hr class="hr-double">
-
-                    <div class="price__desc">Lorem ipsum dolor sit amet, consectetur  esse eveniet ex, fuga illum iusto modi, mollitia</div>
-                     <div class="price__count">7 000 Р</div>
-                    <hr class="hr-double">
-
-
-
+                    {% endfor %}
                 </div>
 
             </div>

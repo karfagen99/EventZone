@@ -7,15 +7,17 @@
 
 <div class="wrapper__profile">
 
+    {% if request.user.is_authenticated %}
+
      <div class="profile__info">
         <div class="avatar"><img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast"></div>
         <div class="main__information">
 
-            <div class="profile username">Я такой-то такой-то</div>
-            <div class="profile registration__date">Зарегестрирован: <span class="boldfont">29.09.2023</span> г</div>
-            <div class="profile completedevents">Успешно наебал людей раз: <span class="boldfont">20</span></div>
+            <div class="profile username">{{ user.get_full_name }}</div>
+            <div class="profile registration__date">Зарегестрирован: <span class="boldfont">{{user.date_joined}}</span></div>
+            <div class="profile completedevents">Мероприятий с EZ: <span class="boldfont">20</span></div>
             <div class="profile city">Казань</div>
-            <div class="profile year"><span class="boldfont">21</span> пайлотс</div>
+            <div class="profile year"><span class="boldfont">21</span> год</div>
 
         </div>
      </div>
@@ -82,10 +84,13 @@
         
       </section>
 
-      <div class="events">Акции для вас</div>
+      <div class="events"><a href="/logout">Выход</a></div>
 
-     
+     {% else %}
 
+    <div class="events"><a href="/login">Войти в аккаунт</a></div>
+
+    {% endif %}
 
 </div>
 

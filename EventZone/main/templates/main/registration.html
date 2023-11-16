@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 {% block style %} {% static 'main/css/registration.css' %} {% endblock %}
-{% block title %} Агентство {% endblock %}
+{% block title %} Регистрация {% endblock %}
 {% block content%}
 {% include 'main/navbar.html' %}
 
@@ -19,34 +19,13 @@
             </div>
             <div class="reg__info">Регистрация</div>
             <div class="menu__wrap">
-                
-                <div class="text-field">
-                    <label class="text-field__label" for="login">Логин</label>
-                    <input class="text-field__input" type="text" name="login" id="login" placeholder="Login">
-                  </div>
 
-                  <div class="text-field">
-                    <label class="text-field__label" for="mail">Почта</label>
-                    <input class="text-field__input" type="text" name="mail" id="mail" placeholder="Email">
-                  </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="logbtn reg" type="submit">Зарегистрироваться</button>
+                </form>
 
-                  <div class="text-field">
-                    <label class="text-field__label" for="login">Пароль</label>
-                    <input class="text-field__input" type="password" name="login" id="pass" placeholder="Password">
-                  </div>
-
-                  <div class="text-field">
-                    <label class="text-field__label" for="checklogin">Подтвердите пароль</label>
-                    <input class="text-field__input" type="password" name="checklogin" id="checkpass" placeholder="Password">
-                  </div>
-                  <div class="options__block">
-                  <input type="checkbox" class="custom-checkbox" id="remember" name="check" value="yes">
-                    <label for="remember">Запомнить</label>
-
-                    
-
-                    </div>
-                    <button class="logbtn reg">Зарегистрироваться</button>
                 </div>
             </div>
         </div>
