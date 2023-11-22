@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, FeedbackForm
 from .models import *
 from django.views.generic.list import ListView
 from django.views.generic import DetailView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from .filters import agencyFilter
 
 
 
@@ -20,17 +21,9 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
-def agencies(request):
-    Agency = agency.objects.all()
-    return render(request, 'main/agency.html',{'Agency': Agency})
-def agencySort(request):
-    Agency = agency.objects.all()
-    sort_by = request.GET.get("sort","l2h")
-    if sort_by == "l2h":
-        Agency = agency.price.order_by("price")
-    elif sort_by == "h2l":
-        Agency = agency.price.order_by("-price")
-    return (request, 'main/agency.html',{'Agency': Agency})
+def agencyFilt(request):
+    f = agencyFilter(request.GET, queryset=agency.objects.all())
+    return render(request,'main/agency.html',{'filter': f})
 
 
 def agencieslayout(request,pk):
@@ -46,7 +39,20 @@ def profile(request):
     return render(request, 'main/profile.html')
 
 def contacts(request):
-    return render(request, 'main/contacts.html')
+    error=''
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            redirect('/')
+        else:
+            error = 'Не верные данные'
+
+    form = FeedbackForm()
+
+    data ={'form':form}
+
+    return render(request, 'main/contacts.html', data)
 
 def registration(request):
     if request.method == 'POST':

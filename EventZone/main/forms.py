@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 
+from .models import FAQ
 
 
 class SignUpForm (UserCreationForm):
@@ -63,3 +65,19 @@ class LoginForm(forms.Form): # Форма логина
             'username': "",
             'password': "",
         }
+class FeedbackForm(ModelForm):
+    name = forms.CharField(
+        label='Имя',
+        widget=forms.TextInput(attrs={'class': 'text-field', 'placeholder': 'Имя'}),
+    )
+    email = forms.CharField(
+        label='Почта',
+        widget=forms.TextInput(attrs={'class': 'text-field', 'placeholder': 'Почта'}),
+    )
+    question = forms.CharField(
+        label='Вопрос',
+        widget=forms.TextInput(attrs={'class': 'feedback', 'placeholder': 'Вопрос'}),
+    )
+    class Meta:
+        model = FAQ
+        fields = ['name','email','question']

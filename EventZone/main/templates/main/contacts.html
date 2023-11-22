@@ -23,25 +23,14 @@
                 Не нашли ответа? <br>
                 Свяжитесь с нами!
             </div>
+
             <div class="send__section">
-                <div class="text-field">
-                    <label class="text-field__label" for="login">Имя</label>
-                    <input class="text-field__input faq" type="text" name="login" id="login" placeholder="Имя">
-                  </div>
-    
-                  <div class="text-field">
-                    <label class="text-field__label" for="mail">Почта</label>
-                    <input class="text-field__input faq" type="email" name="mail" id="mail" placeholder="Email">
-                  </div>
-    
-                  <div class="text-field">
-                   <textarea class="feedback"></textarea>
-                  </div>
-    
-                  <input type="checkbox" class="custom-checkbox" id="remember" name="check" value="yes">
-                        <label for="remember">Я ознакомился с политикой конфиденциальности и принимаю условия обработки
-                            моих персональных данных*.</label>
-                        <button class="logbtn reg">Отправить</button>
+                <form method="POST">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <button type="submit" class="logbtn reg">Отправить</button>
+                </form>
             </div>
            
 

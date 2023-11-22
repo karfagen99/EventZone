@@ -30,4 +30,14 @@ class gallery(models.Model):
     def __str__(self):
         return self.description
 
-
+class categorieslist(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Категория')
+    def __str__(self):
+        return self.title
+class category(models.Model):
+    agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='агентство')
+    categorieslist = models.ForeignKey(categorieslist, on_delete=models.CASCADE, verbose_name='категория')
+class FAQ(models.Model):
+    name = models.CharField(max_length=30, verbose_name='Имя')
+    email = models.CharField(max_length=40, verbose_name='Почта')
+    question = models.CharField(max_length=30, verbose_name='Вопрос')

@@ -12,12 +12,12 @@
 
     <div class="under__nav__right">
         <ul class="filter__list">
-            <li class="filter__item" id="all"><a href="#">Все</a> </li>
-            <li class="filter__item"><a href="#">Свадьба <span class="stick" > |</span> </a> </li>
-            <li class="filter__item"><a href="#">Юбилей <span class="stick" > |</span></a> </li>
-            <li class="filter__item"><a href="#">День рождения <span class="stick" >| </span></a> </li>
-            <li class="filter__item"><a href="#">Корпоратив <span class="stick" > |</span></a> </li>
-            <li class="filter__item"><a href="#">Тематическое</a> </li>
+            <li class="filter__item" id="all"><a href="?cat=all">Все</a> </li>
+            <li class="filter__item"><a href="?cat=wedding">Свадьба <span class="stick" > |</span> </a> </li>
+            <li class="filter__item"><a href="?cat=aniversary">Юбилей <span class="stick" > |</span></a> </li>
+            <li class="filter__item"><a href="?cat=birthday">День рождения <span class="stick" >| </span></a> </li>
+            <li class="filter__item"><a href="?cat=companyparty">Корпоратив <span class="stick" > |</span></a> </li>
+            <li class="filter__item"><a href="?cat=thematic">Тематическое</a> </li>
         </ul>
     </div>
 
@@ -26,55 +26,41 @@
 
     </div>
 
-<div class="nav__filter">
-    <div class="budget__filter">
-        <div class="budget__text">Бюджет</div>
-        <div class="budget__amount">
-            <form method="POST">
-                <input type="number" class="budget__input" id="pin__budget" placeholder="Введите сумму ₽">
-            </form>
-        </div>
-        <a href="#"><button class="buttoncardfilter">Применить</button></a>
+    <div class="nav__filter">
 
-    </div>
-    <div class="sort__filter">
-        <div class="sortoption">
-            <div class="dropdown">
-                <button class="dropbtn">Сортировать по цене</button>
-                <div class="dropdown-content">
-                  <a href="?sort=l2h">По возрастанию</a>
-                  <a href="?sort=h2l">По убыванию</a>
-                </div>
-              </div>
-        </div>
-    </div>
+        <form method="get">
+
+            {{filter.form.as_table}}
+            <input type="submit" class="buttoncardfilter">
+
+        </form>
+
     </div>
 
     <div class="wrapper__main__page">
 
         <section class="breweries" id="breweries">
     <ul>
+        {% for obj in filter.qs%}
 
-        {% for item in Agency %}
-      <li>
+              <li>
         <figure>
           <!-- Photo by Drew Farwell on Unsplash -->
-          <img src="{{item.picture.url}}" alt="Several friends doing a toast">
-          <figcaption><h3>{{item.title}}</h3></figcaption>
+          <img src="{{obj.picture.url}}" alt="Several friends doing a toast">
+          <figcaption><h3>{{obj.title}}</h3></figcaption>
         </figure>
         <p>
-            {{item.short_description}}
+            {{obj.short_description}}
         </p>
             <div class="info__agency">
-              <div class="budget"><span class="price">Цена: </span> {{item.price}} $</div>
-              <div class="amount__people"><span class="amount">Кол-во человек: </span> {{item.people}}</div>
+              <div class="budget"><span class="price">Цена: </span> {{obj.price}} $</div>
+              <div class="amount__people"><span class="amount">Кол-во человек: </span> {{obj.people}}</div>
           </div>
-       <a href="/agencies/{{item.pk}}"><button class="button card">Подробнее</button></a>
+       <a href="/agencies/{{obj.pk}}"><button class="button card">Подробнее</button></a>
       </li>
+
         {% endfor %}
 
-
-    </ul>
   </section>
 
 
