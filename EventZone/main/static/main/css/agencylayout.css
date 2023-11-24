@@ -136,3 +136,13 @@ li.carousel__item:nth-child(even) {
   background-color: rebeccapurple;
 
 }
+
+.agency__photo {
+    width: 320px;
+    height: 210px;
+    overflow: hidden;
+}
+
+.agency__photo img {
+    width: 100%;
+}

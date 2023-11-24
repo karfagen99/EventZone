@@ -208,13 +208,17 @@ span.amount {
     background-color: #FAFAFA;
     text-align: center;
     width: 1150px;
-    margin-top: 15px;
+
     -webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.filter__form {
+    margin-left: 25px;
 }
 
 

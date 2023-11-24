@@ -6,7 +6,7 @@
 {% include 'main/navbar.html' %}
 
 <div class="wrapper__agency">
-    <div class="wrapper__under__nav">
+    <!-- <div class="wrapper__under__nav">
 
   
 
@@ -24,14 +24,14 @@
 
 
 
-    </div>
+    </div> -->
 
     <div class="nav__filter">
 
-        <form method="get">
+        <form method="get" class="filter__form">
 
             {{filter.form.as_table}}
-            <input type="submit" class="buttoncardfilter">
+            <button type="submit" class="buttoncardfilter">Применить</button>
 
         </form>
 

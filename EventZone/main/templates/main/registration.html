@@ -20,7 +20,7 @@
             <div class="reg__info">Регистрация</div>
             <div class="menu__wrap">
 
-                <form method="post">
+                <form method="post" class="regForm">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button class="logbtn reg" type="submit">Зарегистрироваться</button>

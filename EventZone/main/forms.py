@@ -68,16 +68,17 @@ class LoginForm(forms.Form): # Форма логина
 class FeedbackForm(ModelForm):
     name = forms.CharField(
         label='Имя',
-        widget=forms.TextInput(attrs={'class': 'text-field', 'placeholder': 'Имя'}),
+        widget=forms.TextInput(attrs={'class': 'text-field faq', 'placeholder': 'Имя'}),
     )
     email = forms.CharField(
         label='Почта',
-        widget=forms.TextInput(attrs={'class': 'text-field', 'placeholder': 'Почта'}),
+        widget=forms.TextInput(attrs={'class': 'text-field faq', 'placeholder': 'Почта'}),
     )
     question = forms.CharField(
         label='Вопрос',
-        widget=forms.TextInput(attrs={'class': 'feedback', 'placeholder': 'Вопрос'}),
+        widget=forms.TextInput(attrs={'class': 'feedback faq', 'placeholder': ''}),
     )
     class Meta:
         model = FAQ
         fields = ['name','email','question']
+

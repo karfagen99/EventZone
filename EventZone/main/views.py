@@ -85,3 +85,6 @@ def login_page(request):
 
 
     return render(request, "login_page.html", {"form": form})
+
+def reservation(request):
+    return render(request, 'main/reservation.html')

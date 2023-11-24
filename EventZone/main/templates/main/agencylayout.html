@@ -11,7 +11,7 @@
                 <div class="agency__name">{{Agency.title}}</div>
                 <div class="agency__card">
 <!--                    ТУТ НАДО ПОФИКСИТЬ ФОТО ОНО НЕ ОГРАНИЧЕНО ПО РАЗМЕРУ-->
-                        <div class="agency__photo"><img src="{% static 'main/img/agencylogo.png' %}"> </div>
+                        <div class="agency__photo"><img src="{{Agency.picture.url}}"> </div>
                         <div class="agency__desc">{{Agency.description}}</div>
                 </div>
             </div>

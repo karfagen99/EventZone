@@ -174,3 +174,13 @@ span.amount {
     bottom: 0;
     right: 0;
   } 
+
+  .events.button a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .events.button a:hover {
+    color: #E9C400;
+    transition: all 0.3s ease;
+  }
