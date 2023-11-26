@@ -4,13 +4,15 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from .forms import SignUpForm, LoginForm, FeedbackForm
+from .forms import FeedbackForm
 from .models import *
 from django.views.generic.list import ListView
 from django.views.generic import DetailView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from .filters import agencyFilter
+
+
 
 
 
@@ -24,7 +26,9 @@ def logout_view(request):
 def agencyFilt(request):
     f = agencyFilter(request.GET, queryset=agency.objects.all())
     return render(request,'main/agency.html',{'filter': f})
-
+def solutionsPage(request):
+    f = solutions.objects.all()
+    return render(request,'main/solutions.html',{'filter':f})
 
 def agencieslayout(request,pk):
     Agency = get_object_or_404(agency, pk= pk)
@@ -54,37 +58,11 @@ def contacts(request):
 
     return render(request, 'main/contacts.html', data)
 
-def registration(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('profile')
-    else:
-        form = SignUpForm()
-    return render(request, 'registration.html', {'form': form})
-
-def login_page(request):
-
-    form = LoginForm()
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("profile")
-            else:
-                return redirect("/")
 
 
-    return render(request, "login_page.html", {"form": form})
+def ticket(request):
+    return render(request, 'main/ticket.html')
 
-def reservation(request):
+def reservation(request,pk):
+
     return render(request, 'main/reservation.html')

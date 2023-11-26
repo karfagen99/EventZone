@@ -10,14 +10,13 @@
     {% if request.user.is_authenticated %}
 
      <div class="profile__info">
-        <div class="avatar"><img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast"></div>
+        <div class="avatar"><img src="{% if user.photo %}{{user.photo.url}}{% endif %}" alt=""></div>
         <div class="main__information">
 
             <div class="profile username">{{ user.get_full_name }}</div>
             <div class="profile registration__date">Зарегестрирован: <span class="boldfont">{{user.date_joined}}</span></div>
-            <div class="profile completedevents">Мероприятий с EZ: <span class="boldfont">20</span></div>
-            <div class="profile city">Казань</div>
-            <div class="profile year"><span class="boldfont">21</span> год</div>
+            <div class="profile city">Город: <span class="boldfont">{{user.city}}</span></div>
+            <div class="profile year">Возраст: <span class="boldfont">{{user.age}}</span></div>
 
         </div>
      </div>
@@ -33,7 +32,7 @@
             <figure>
               <!-- Photo by Drew Farwell on Unsplash -->
               <img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast">
-              <figcaption><h3>Название</h3></figcaption>
+              <figcaption><h3>Название решения</h3></figcaption>
             </figure>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum facilis quo dicta debitis quam nostrum veniam quis aut a consequatur. Itaque ullam in fugit magni corporis voluptate molestiae blanditiis minima!
@@ -84,11 +83,11 @@
         
       </section>
 
-      <div class="events button"><a href="/logout">Выход</a></div>
+      <div class="events button"><a href="account/logout">Выход</a></div>
 
      {% else %}
 
-    <div class="events button"><a href="/login">Войти в аккаунт</a></div>
+    <div class="events button"><a href="account/login">Войти в аккаунт</a></div>
 
     {% endif %}
 

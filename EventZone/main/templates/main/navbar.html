@@ -12,16 +12,14 @@
                     <ul class="header__nav__list">
                         
                         <li><a href="/">Главная</a></li>
-                        <li><a href="#">Решения</a></li>
+                        <li><a href="/solutions">Решения</a></li>
                         <li><a href="/agencies">Агентства</a></li>
-                        <li><a href="#">Подрячики</a></li>
                         <li><a href="/contacts">Контакты</a></li>
                         {% if request.user.is_authenticated %}
                         <li><a href="/profile">Личный Кабинет</a></li>
                         {% else %}
-                        <li><a href="/login" id="login" ><img src="{% static 'main/img/icons/login.png'%}" width="20"  height="20"></a></li>
+                        <li><a href="/account/login" id="login" ><img src="{% static 'main/img/icons/login.png'%}" width="20"  height="20"></a></li>
                         {% endif %}
-<!--                        class="open-popup"-->
                     </ul>
                 </div>
 
@@ -29,54 +27,7 @@
 
 
         </div>
-        <div class="popup">
-            <div class="popup__body">
-                <div class="popup__content">
-                    <a href="/" class="close__popup"><img src="{% static 'main/img/icons/close.png' %}"></a>
-                    <div class="popup__wrapper">
-                        
-                        <div class="content__wrapper">
-                            <img src="{% static 'main/img/icons/logo_yellow.png' %}">
-                            <div class="logo__title">EventZone</div>
-                        <div class="choose__block">
 
-
-                            <a href="/login"><button class="login__btn">Login</button></a>
-                                <a href="/registration"><button class="signup__btn">Sign Up</button></a>
-                        </div>
-
-                        <form action="" method="POST">
-                            <p class="error-list"></p>
-                            {% csrf_token %}
-                            {{form_log.as_p}}
-                            <button class="logbtn" type="submit">Войти</button>
-                        </form>
-
-
-                        <div class="text-field">
-                            <label class="text-field__label" for="login">Логин</label>
-                            <input class="text-field__input" type="text" name="login" id="login" placeholder="Login">
-                          </div>
-
-                          <div class="text-field">
-                            <label class="text-field__label" for="login">Пароль</label>
-                            <input class="text-field__input" type="password" name="login" id="pass" placeholder="Password">
-                          </div>
-                          <div class="options__block">
-                          <input type="checkbox" class="custom-checkbox" id="remember" name="check" value="yes">
-                            <label for="remember">Запомнить</label>
-
-                            
-
-                            </div>
-                            <button class="logbtn">Войти</button>
-                        </div>
-                        
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
     </header>
 
     

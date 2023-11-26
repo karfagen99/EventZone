@@ -20,12 +20,12 @@ class agencyFilter(django_filters.FilterSet):
         ('5','Тематическое'),
         ('6','Спортивное')
     )
-    category__categorieslist = django_filters.ChoiceFilter(choices=CATEGORY_CHOICES, label='Категория')
     price = django_filters.OrderingFilter(choices=PRICE_CHOICES, label='Цена')
-
+    category__categorieslist = django_filters.ChoiceFilter(choices=CATEGORY_CHOICES, label='Категория')
+    title = django_filters.CharFilter(lookup_expr='contains',label='Поиск по названию')
     class Meta:
          model = agency
-         fields = ['category__categorieslist','price']
+         fields = ['price','category__categorieslist']
 
     def __init__(self, data=None, queryset=None, *, request=None, prefix=None):
         super(agencyFilter, self).__init__(data=data, queryset=queryset, request=request, prefix=prefix)

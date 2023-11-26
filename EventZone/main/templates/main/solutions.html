@@ -1,0 +1,46 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block style %} {% static 'main/css/agency.css' %} {% endblock %}
+{% block title %} Готовые решения {% endblock %}
+{% block content%}
+{% include 'main/navbar.html' %}
+
+<div class="wrapper__agency">
+
+    <div class="wrapper__main__page">
+
+        <section class="breweries" id="breweries">
+    <ul>
+        {% for obj in filter %}
+
+              <li>
+        <figure>
+          <!-- Photo by Drew Farwell on Unsplash -->
+          <img src="{{obj.picture.url}}" alt="Several friends doing a toast">
+          <figcaption><h3>{{obj.title}}</h3></figcaption>
+        </figure>
+        <p>
+            {{obj.description}}
+        </p>
+       <a href="/reservation/{{obj.pk}}"><button class="button card">К решению</button></a>
+      </li>
+
+        {% endfor %}
+
+  </section>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+{% include 'main/footer.html' %}
+{% endblock %}

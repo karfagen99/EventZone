@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block style %} {% static 'main/css/registration.css' %} {% endblock %}
+{% block title %} Регистрация {% endblock %}
+{% block content%}
+{% include 'main/navbar.html' %}
+
+<div class="wrapper__reg">
+
+    <div class="left__wrap">
+        <img src="{% static 'main/img/regphoto.jpg' %}">
+    </div>
+
+    <div class="right__wrap">
+    
+        <div class="reg__wrap">
+            <div class="logo__wrap">
+                <img src="{% static 'main/img/icons/logo_yellow.png' %}">
+            </div>
+            <div class="reg__info">Регистрация</div>
+            <div class="menu__wrap">
+
+                <form method="post" class="regForm">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="logbtn reg" type="submit">Зарегистрироваться</button>
+                </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+{% include 'main/footer.html' %}
+{% endblock %}

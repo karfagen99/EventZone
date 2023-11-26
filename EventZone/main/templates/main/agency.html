@@ -6,25 +6,6 @@
 {% include 'main/navbar.html' %}
 
 <div class="wrapper__agency">
-    <!-- <div class="wrapper__under__nav">
-
-  
-
-    <div class="under__nav__right">
-        <ul class="filter__list">
-            <li class="filter__item" id="all"><a href="?cat=all">Все</a> </li>
-            <li class="filter__item"><a href="?cat=wedding">Свадьба <span class="stick" > |</span> </a> </li>
-            <li class="filter__item"><a href="?cat=aniversary">Юбилей <span class="stick" > |</span></a> </li>
-            <li class="filter__item"><a href="?cat=birthday">День рождения <span class="stick" >| </span></a> </li>
-            <li class="filter__item"><a href="?cat=companyparty">Корпоратив <span class="stick" > |</span></a> </li>
-            <li class="filter__item"><a href="?cat=thematic">Тематическое</a> </li>
-        </ul>
-    </div>
-
-
-
-
-    </div> -->
 
     <div class="nav__filter">
 
@@ -53,7 +34,7 @@
             {{obj.short_description}}
         </p>
             <div class="info__agency">
-              <div class="budget"><span class="price">Цена: </span> {{obj.price}} $</div>
+              <div class="budget"><span class="price">Цена: </span> {{obj.price}} ₽</div>
               <div class="amount__people"><span class="amount">Кол-во человек: </span> {{obj.people}}</div>
           </div>
        <a href="/agencies/{{obj.pk}}"><button class="button card">Подробнее</button></a>

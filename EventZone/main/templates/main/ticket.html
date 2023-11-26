@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block style %} {% static 'main/css/ticket.css' %} {% endblock %}
+{% block title %} EventZone {% endblock %}
+{% block content %}
+{% include 'main/navbar.html' %}
+
+<div class="wrapper__ticket">
+
+    <div class="ticket__text">Ваш заказ</div>
+    <div class="order__text">№ 312543234</div>
+    <div class="details__text">Детали заказа:</div>
+<div class="wrapper__center">
+
+    <div class="order__detail">
+        <div class="order tarif">Тариф: Эконом</div>
+        <div class="order date">Дата проведения: 24.02.2023</div>
+        <div class="order place">Площадка: Ресторан Голубая Лагуна</div>
+    </div>
+
+    <div class="service__list__wrapper">
+        <div class="service__list__text">Перечень услуг</div>
+        <div class="service__list__items">
+            <div class="service__list__item">Ведущий</div>
+            <div class="service__list__item">Ведущий</div>
+            <div class="service__list__item">Ведущий</div>
+            <div class="service__list__item">Ведущий</div>
+            <div class="service__list__item">Ведущий</div>
+            <div class="service__list__item">Ведущий</div>
+
+        </div>
+
+    </div>
+    <a href="/profile"><button class="logbtn reg" type="submit">Перейти в профиль</button></a>
+
+</div>
+
+
+</div>
+
+
+
+{% include 'main/footer.html' %}
+{% endblock %}
