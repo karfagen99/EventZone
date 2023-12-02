@@ -1,7 +1,7 @@
 import django_filters
 from django.forms import SelectMultiple
 
-from .models import agency,category
+from .models import agency, category, services, solutionPlans
 from django import forms
 
 
@@ -33,4 +33,12 @@ class agencyFilter(django_filters.FilterSet):
         self.filters['category__categorieslist'].field.widget.attrs.update({'class': 'budget__input'})
 
 
+class planFilter(django_filters.FilterSet):
 
+    class Meta:
+        model = solutionPlans
+        fields = ['plan']
+
+    def __init__(self, data=None, queryset=None, *, request=None, prefix=None):
+        super(planFilter, self).__init__(data=data, queryset=queryset, request=request, prefix=prefix)
+        self.filters['plan'].field.widget.attrs.update({'class': 'text-field__input'})

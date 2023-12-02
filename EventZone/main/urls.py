@@ -8,7 +8,7 @@ urlpatterns = [
     path('contacts', views.contacts, name='contacts'),
     path('agencies', views.agencyFilt, name='agencies'),
     path('reservation/<int:pk>', views.reservation, name='reservation'),
-    path('ticket', views.ticket, name='ticket'),
+    path('ticket/<int:pk>', views.ticket, name='ticket'),
     path('solutions', views.solutionsPage, name='solutions'),
 
 ]

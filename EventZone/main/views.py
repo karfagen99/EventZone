@@ -4,16 +4,16 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from .forms import FeedbackForm
+from .forms import FeedbackForm, BookingForm
 from .models import *
 from django.views.generic.list import ListView
 from django.views.generic import DetailView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from .filters import agencyFilter
-
-
-
+from .filters import agencyFilter, planFilter
+from django.utils import timezone
+from django import forms
+from datetime import datetime
 
 
 def index(request):
@@ -40,7 +40,8 @@ def registration(request):
     return render(request, 'main/registration.html')
 
 def profile(request):
-    return render(request, 'main/profile.html')
+    book_solutions = book_solution.objects.all().filter(user=request.user)
+    return render(request, 'main/profile.html',{'book_solutions': book_solutions})
 
 def contacts(request):
     error=''
@@ -60,9 +61,38 @@ def contacts(request):
 
 
 
-def ticket(request):
-    return render(request, 'main/ticket.html')
+def ticket(request,pk):
+    BOOK_solution = get_object_or_404(book_solution, pk=pk)
+    BOOK_service = solutionPlans.objects.all().filter(solution=BOOK_solution.solution,plan=BOOK_solution.plan)
+    if request.method == 'POST':
+        BOOK_solution.delete()
+        return redirect('profile')
+    return render(request, 'main/ticket.html',{'BOOK_solution': BOOK_solution,'BOOK_service':BOOK_service})
 
 def reservation(request,pk):
+    f = solutionPlans.objects.all()
+    f1 = plans.objects.all()
+    Solution = get_object_or_404(solutions,pk=pk)
+    Gallery = gallery.objects.all().filter(solution=Solution)
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        userbook = request.user
+        booking = form.save(commit=False)
+        booking.user = userbook
+        booking.solution = Solution
+        if form.is_valid():
+            today = timezone.now().date()
+            checkdate = form.cleaned_data.get('book_date')
+            date_format = "%Y-%m-%d"
+            checkdate = datetime.strptime(checkdate,date_format).date()
+            if checkdate < today:
+                raise forms.ValidationError('Выберите дату, начиная с сегодняшнего дня.')
+                return
+            booking.save()
+            return redirect('profile')
+        else:
+            error = 'Не верные данные'
 
-    return render(request, 'main/reservation.html')
+    form = BookingForm()
+
+    return render(request, 'main/reservation.html', {'filter': f, 'filter1': f1, 'filterPhoto': Gallery,'form': form})

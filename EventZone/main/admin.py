@@ -13,6 +13,10 @@ admin.site.register(solutions)
 admin.site.register(plans)
 admin.site.register(services)
 admin.site.register(solutionPlans)
+admin.site.register(book_solution)
+admin.site.register(place)
+
+
 
 
 

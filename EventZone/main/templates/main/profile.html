@@ -26,55 +26,27 @@
 
     <section class="breweries" id="breweries">
         <ul>
-    
-          
-          <li>
+        {% for obj in book_solutions %}
+                      <li>
             <figure>
               <!-- Photo by Drew Farwell on Unsplash -->
-              <img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast">
-              <figcaption><h3>Название решения</h3></figcaption>
+              <img src="{{obj.solution.picture.url}}" alt="Several friends doing a toast">
+              <figcaption><h3>{{obj.solution}}</h3></figcaption>
             </figure>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum facilis quo dicta debitis quam nostrum veniam quis aut a consequatur. Itaque ullam in fugit magni corporis voluptate molestiae blanditiis minima!
+                Площадка: {{obj.book_place}} <br>
+                Описание:
+                {{obj.solution.description}}
             </p>
                 <div class="info__agency">
-                  <div class="budget"><span class="price">Цена: </span> 42000 $</div>
-                  <div class="amount__people"><span class="amount">Кол-во человек: </span> 50</div>
+                  <div class="budget"><span class="price">Тариф: </span>{{obj.plan}} </div>
+                  <div class="amount__people"><span class="amount">Дата проведения: </span> {{obj.book_date}}</div>
               </div>
-           <a href="/agencies/{{item.pk}}"><button class="button card">Подробнее</button></a>
+           <a href="/ticket/{{obj.pk}}"><button class="button card">Подробнее</button></a>
           </li>
-           
-          <li>
-            <figure>
-              <!-- Photo by Drew Farwell on Unsplash -->
-              <img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast">
-              <figcaption><h3>Название</h3></figcaption>
-            </figure>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum facilis quo dicta debitis quam nostrum veniam quis aut a consequatur. Itaque ullam in fugit magni corporis voluptate molestiae blanditiis minima!
-            </p>
-                <div class="info__agency">
-                  <div class="budget"><span class="price">Цена: </span> 42000 $</div>
-                  <div class="amount__people"><span class="amount">Кол-во человек: </span> 50</div>
-              </div>
-           <a href="/agencies/{{item.pk}}"><button class="button card">Подробнее</button></a>
-          </li>
+        {% endfor %}
 
-          <li>
-            <figure>
-              <!-- Photo by Drew Farwell on Unsplash -->
-              <img src="{% static 'main/img/testimage.png' %}" alt="Several friends doing a toast">
-              <figcaption><h3>Название</h3></figcaption>
-            </figure>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum facilis quo dicta debitis quam nostrum veniam quis aut a consequatur. Itaque ullam in fugit magni corporis voluptate molestiae blanditiis minima!
-            </p>
-                <div class="info__agency">
-                  <div class="budget"><span class="price">Цена: </span> 42000 $</div>
-                  <div class="amount__people"><span class="amount">Кол-во человек: </span> 50</div>
-              </div>
-           <a href="/agencies/{{item.pk}}"><button class="button card">Подробнее</button></a>
-          </li>
+
 
           
     

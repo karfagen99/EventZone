@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from users.models import CustomUser
+
+
 # Create your models here.
 
 class agency(models.Model):
@@ -69,8 +72,8 @@ class pricelist(models.Model):
         verbose_name_plural = 'Прайс листы'
 
 class gallery(models.Model):
-    agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='Агентство', null=True)
-    solution = models.ForeignKey(solutions, on_delete=models.CASCADE, verbose_name='Решение', null=True)
+    agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='Агентство', null=True,blank=True)
+    solution = models.ForeignKey(solutions, on_delete=models.CASCADE, verbose_name='Решение', null=True,blank=True)
     description = models.CharField(max_length=200, verbose_name='Описание')
     photo = models.ImageField(upload_to='images/', verbose_name='Фото', blank=True, null=True)
 
@@ -97,6 +100,14 @@ class category(models.Model):
     class Meta:
         verbose_name = 'Категория агентства'
         verbose_name_plural = 'Категории агентств'
+
+class place(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Площадка')
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Площадка'
+        verbose_name_plural = 'Площадки'
 class FAQ(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
     email = models.CharField(max_length=40, verbose_name='Почта')
@@ -107,3 +118,15 @@ class FAQ(models.Model):
     class Meta:
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
+
+class book_solution(models.Model):
+    user = models.ForeignKey(CustomUser,verbose_name='Клиент', on_delete=models.CASCADE)
+    book_date = models.DateField(verbose_name='Дата',default='', unique=True)
+    book_place = models.ForeignKey(place,verbose_name='Площадка', on_delete=models.CASCADE)
+    plan = models.ForeignKey(plans,verbose_name='Тариф', on_delete=models.CASCADE)
+    solution = models.ForeignKey(solutions, verbose_name='Решение', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.user)
+    class Meta:
+        verbose_name = 'Бронь'
+        verbose_name_plural = 'Брони'

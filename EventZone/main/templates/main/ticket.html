@@ -8,31 +8,32 @@
 <div class="wrapper__ticket">
 
     <div class="ticket__text">Ваш заказ</div>
-    <div class="order__text">№ 312543234</div>
+    <div class="order__text">№ {{BOOK_solution.pk}}</div>
     <div class="details__text">Детали заказа:</div>
 <div class="wrapper__center">
 
     <div class="order__detail">
-        <div class="order tarif">Тариф: Эконом</div>
-        <div class="order date">Дата проведения: 24.02.2023</div>
-        <div class="order place">Площадка: Ресторан Голубая Лагуна</div>
+        <div class="order tarif">Мероприятие: {{BOOK_solution.solution}}</div>
+        <div class="order tarif">Тариф: {{BOOK_solution.plan}}</div>
+        <div class="order date">Дата проведения: {{BOOK_solution.book_date}}</div>
+        <div class="order place">Площадка: {{BOOK_solution.book_place}}</div>
     </div>
 
     <div class="service__list__wrapper">
         <div class="service__list__text">Перечень услуг</div>
         <div class="service__list__items">
-            <div class="service__list__item">Ведущий</div>
-            <div class="service__list__item">Ведущий</div>
-            <div class="service__list__item">Ведущий</div>
-            <div class="service__list__item">Ведущий</div>
-            <div class="service__list__item">Ведущий</div>
-            <div class="service__list__item">Ведущий</div>
+            {% for item in BOOK_service %}
+                        <div class="service__list__item">{{item.service}}</div>
+            {% endfor %}
 
         </div>
 
     </div>
     <a href="/profile"><button class="logbtn reg" type="submit">Перейти в профиль</button></a>
-
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="logbtn reg">Отказаться от брони</button>
+    </form>
 </div>
 
 

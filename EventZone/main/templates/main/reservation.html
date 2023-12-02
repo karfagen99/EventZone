@@ -19,29 +19,26 @@
                     <div class="menu__wrap">
         
                         <div class="text-field">
-                            <label class="text-field__label" for="login">Тариф</label>
-                            <input class="text-field__input" type="text" name="login" id="login" placeholder="Тариф">
-                          </div>
-        
-                          <div class="text-field">
-                            <label class="text-field__label" for="mail">Дата</label>
-                            <input class="text-field__input" type="text" name="mail" id="mail" placeholder="Дата">
-                          </div>
-        
-                          <div class="text-field">
-                            <label class="text-field__label" for="login">Площадка</label>
-                            <input class="text-field__input" type="password" name="login" id="pass" placeholder="Название площадки">
-                          </div>
-        
-                          
-                          <div class="options__block">
-                          
-        
-        
-        
-                            </div>
-                        <a href="/ticket"><button class="logbtn reg">Забронировать</button></a>
+
+                            <form method="POST">
+
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                                {% if request.user.is_authenticated %}
+                            <button type="submit" class="logbtn reg">Забронировать</button>
+                            </form>
+                        {% else %}
+                                </form>
+                                <a href="/account/login"><button class="logbtn reg">Войти</button></a>
+                        {% endif %}
+
                         </div>
+
+
+                          </div>
+
+
                     </div>
               
                 
@@ -52,12 +49,14 @@
             <div class="main__right">
                 <div class="option__text">Перечень услуг</div>
                 <div class="option__items">
-                    <div class="option__item">Ведущий</div>
-                    <div class="option__item">Ведущий</div>
-                    <div class="option__item">Ведущий</div>
-                    <div class="option__item">Ведущий</div>
-                    <div class="option__item">Ведущий</div>
-                    <div class="option__item">Ведущий</div>
+                    {% for obj in filter1 %}
+                    <div class="option__item tarif">{{ obj.title}}</div>
+                        {% for item in filter %}
+                            {% if item.plan == obj %}
+                            <div class="option__item margin">{{ item.service}}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
                 </div>
                 <div class="left__gallery">
                     <div class="gallery__desc__left">
@@ -65,7 +64,9 @@
                         <div class="gallery__carousel">
                             <section class="carousel">
                                 <ul class="carousel">
-                                    <li class="carousel__item"><img src="{% static 'main/img/gallery.jpg' %}"></li>         
+                                    {% for obj in filterPhoto %}
+                                    <li class="carousel__item"><img src="{{ obj.photo.url }}"></li>
+                                    {% endfor %}
                                 </ul>
                             </section>
     
