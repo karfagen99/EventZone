@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 
@@ -10,7 +12,7 @@ from django.views.generic.list import ListView
 from django.views.generic import DetailView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from .filters import agencyFilter, planFilter
+from .filters import agencyFilter, planFilter, contractorFilter
 from django.utils import timezone
 from django import forms
 from datetime import datetime
@@ -26,6 +28,8 @@ def logout_view(request):
 def agencyFilt(request):
     f = agencyFilter(request.GET, queryset=agency.objects.all())
     return render(request,'main/agency.html',{'filter': f})
+
+
 def solutionsPage(request):
     f = solutions.objects.all()
     return render(request,'main/solutions.html',{'filter':f})
@@ -74,6 +78,7 @@ def reservation(request,pk):
     f1 = plans.objects.all()
     Solution = get_object_or_404(solutions,pk=pk)
     Gallery = gallery.objects.all().filter(solution=Solution)
+    books = book_solution.objects.all()
     if request.method == 'POST':
         form = BookingForm(request.POST)
         userbook = request.user
@@ -86,8 +91,10 @@ def reservation(request,pk):
             date_format = "%Y-%m-%d"
             checkdate = datetime.strptime(checkdate,date_format).date()
             if checkdate < today:
-                raise forms.ValidationError('Выберите дату, начиная с сегодняшнего дня.')
-                return
+                return HttpResponse('Неправильно выбрана дата')
+            else:
+                if books.filter(Q(book_date=checkdate)).exists() and books.filter(solution=Solution):
+                    return HttpResponse('Дата занята')
             booking.save()
             return redirect('profile')
         else:
@@ -95,4 +102,14 @@ def reservation(request,pk):
 
     form = BookingForm()
 
-    return render(request, 'main/reservation.html', {'filter': f, 'filter1': f1, 'filterPhoto': Gallery,'form': form})
+    return render(request, 'main/reservation.html', {'filter': f, 'filter1': f1, 'filterPhoto': Gallery,'form': form,'sol':Solution})
+
+def contractorFilt(request):
+    f = contractorFilter(request.GET, queryset=contractor.objects.all())
+    return render(request,'main/contractor.html',{'filter': f})
+
+def contractorlayout(request,pk):
+    Contractor = get_object_or_404(contractor, pk= pk)
+    Gallery = gallery.objects.all().filter(contractors=Contractor)
+    Pricelist = pricelist.objects.all().filter(contractors=Contractor)
+    return render(request, 'main/agencylayout.html', {'Agency': Contractor,'Gallery': Gallery,'Pricelist': Pricelist})

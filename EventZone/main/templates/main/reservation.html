@@ -52,7 +52,7 @@
                     {% for obj in filter1 %}
                     <div class="option__item tarif">{{ obj.title}}</div>
                         {% for item in filter %}
-                            {% if item.plan == obj %}
+                            {% if item.plan == obj and item.solution == sol %}
                             <div class="option__item margin">{{ item.service}}</div>
                             {% endif %}
                         {% endfor %}

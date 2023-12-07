@@ -32,6 +32,20 @@ class solutions(models.Model):
         verbose_name = 'Решение'
         verbose_name_plural = 'Решения'
 
+class contractor(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Название подрядчика')
+    short_description = models.CharField(max_length=200, verbose_name='Короткое описание')
+    description = models.CharField(max_length=600, verbose_name='Описание')
+    type = models.CharField(max_length=40, verbose_name='Тип мероприятий')
+    experience = models.CharField(max_length=2, verbose_name='Опыт работы')
+    picture = models.ImageField(upload_to='images/', verbose_name='Фото', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = 'Подрядчик'
+        verbose_name_plural = 'Подрядчики'
+
 class plans(models.Model):
     title = models.CharField(max_length=30, verbose_name='Название тарифа')
 
@@ -62,24 +76,26 @@ class solutionPlans(models.Model):
         verbose_name_plural = 'Услуги в тарифах'
 
 class pricelist(models.Model):
-    agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='агентство')
+    agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='агентство', null=True,blank=True)
+    contractors = models.ForeignKey(contractor, on_delete=models.CASCADE, verbose_name='Подрядчик', null=True,blank=True)
     price = models.CharField(max_length=6, verbose_name='Стоимость услуги')
     description = models.CharField(max_length=200, verbose_name='Описание')
     def __str__(self):
-        return self.description
+        return str(self.agent) + ' ' + str(self.contractors) + ' ' + self.description
     class Meta:
         verbose_name = 'Прайс лист'
         verbose_name_plural = 'Прайс листы'
 
 class gallery(models.Model):
     agent = models.ForeignKey(agency, on_delete=models.CASCADE, verbose_name='Агентство', null=True,blank=True)
+    contractors = models.ForeignKey(contractor, on_delete=models.CASCADE, verbose_name='Подрядчик', null=True,blank=True)
     solution = models.ForeignKey(solutions, on_delete=models.CASCADE, verbose_name='Решение', null=True,blank=True)
     description = models.CharField(max_length=200, verbose_name='Описание')
     photo = models.ImageField(upload_to='images/', verbose_name='Фото', blank=True, null=True)
 
 
     def __str__(self):
-        return self.description
+        return str(self.agent) + ' ' + str(self.contractors) + ' ' + self.description
     class Meta:
         verbose_name = 'Галлерея'
         verbose_name_plural = 'Галлерея'
@@ -121,7 +137,7 @@ class FAQ(models.Model):
 
 class book_solution(models.Model):
     user = models.ForeignKey(CustomUser,verbose_name='Клиент', on_delete=models.CASCADE)
-    book_date = models.DateField(verbose_name='Дата',default='', unique=True)
+    book_date = models.DateField(verbose_name='Дата',default='')
     book_place = models.ForeignKey(place,verbose_name='Площадка', on_delete=models.CASCADE)
     plan = models.ForeignKey(plans,verbose_name='Тариф', on_delete=models.CASCADE)
     solution = models.ForeignKey(solutions, verbose_name='Решение', on_delete=models.CASCADE)
@@ -130,3 +146,4 @@ class book_solution(models.Model):
     class Meta:
         verbose_name = 'Бронь'
         verbose_name_plural = 'Брони'
+

@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
 admin.site.register(agency)
+admin.site.register(contractor)
 admin.site.register(pricelist)
 admin.site.register(gallery)
 admin.site.register(category)

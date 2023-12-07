@@ -6,6 +6,8 @@
 {% include 'main/navbar.html' %}
 
 <div class="wrapper__ticket">
+        {% if request.user.is_authenticated %}
+
 
     <div class="ticket__text">Ваш заказ</div>
     <div class="order__text">№ {{BOOK_solution.pk}}</div>
@@ -36,6 +38,11 @@
     </form>
 </div>
 
+         {% else %}
+
+    <div class="events button"><a href="account/login">Войти в аккаунт</a></div>
+
+    {% endif %}
 
 </div>
 

@@ -10,5 +10,7 @@ urlpatterns = [
     path('reservation/<int:pk>', views.reservation, name='reservation'),
     path('ticket/<int:pk>', views.ticket, name='ticket'),
     path('solutions', views.solutionsPage, name='solutions'),
+    path('contractors', views.contractorFilt, name='contractors'),
+    path('contractors/<int:pk>', views.contractorlayout, name='contractor_detail'),
 
 ]
