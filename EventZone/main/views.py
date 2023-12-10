@@ -9,13 +9,14 @@ from django.urls import reverse_lazy
 from .forms import FeedbackForm, BookingForm
 from .models import *
 from django.views.generic.list import ListView
-from django.views.generic import DetailView,CreateView
+from django.views.generic import DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from .filters import agencyFilter, planFilter, contractorFilter
 from django.utils import timezone
 from django import forms
 from datetime import datetime
+from django.contrib import messages
 
 
 def index(request):
@@ -113,3 +114,4 @@ def contractorlayout(request,pk):
     Gallery = gallery.objects.all().filter(contractors=Contractor)
     Pricelist = pricelist.objects.all().filter(contractors=Contractor)
     return render(request, 'main/agencylayout.html', {'Agency': Contractor,'Gallery': Gallery,'Pricelist': Pricelist})
+

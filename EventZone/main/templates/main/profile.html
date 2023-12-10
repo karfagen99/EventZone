@@ -13,10 +13,12 @@
         <div class="avatar"><img src="{% if user.photo %}{{user.photo.url}}{% endif %}" alt=""></div>
         <div class="main__information">
 
-            <div class="profile username">{{ user.get_full_name }}</div>
+            <div class="profile username">{{ user.name }} {{user.surname}} {{user.middlename}}</div>
             <div class="profile registration__date">Зарегестрирован: <span class="boldfont">{{user.date_joined}}</span></div>
             <div class="profile city">Город: <span class="boldfont">{{user.city}}</span></div>
             <div class="profile year">Возраст: <span class="boldfont">{{user.age}}</span></div>
+            <div class="profile year"><a href="/account/change"><button class="logbtn reg">Редактировать профиль</button></a></div>
+
 
         </div>
      </div>
@@ -35,7 +37,7 @@
             </figure>
             <p>
                 Площадка: {{obj.book_place}} <br>
-                Описание:
+                Тип мероприятия:
                 {{obj.solution.description}}
             </p>
                 <div class="info__agency">

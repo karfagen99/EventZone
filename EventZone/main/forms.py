@@ -2,9 +2,10 @@ from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, FileInput
 from django.forms.fields import DateField
 
+from users.models import CustomUser
 from .models import FAQ, book_solution, place, plans
 
 

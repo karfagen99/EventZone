@@ -1,4 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.forms import TextInput, FileInput
+
 from .models import CustomUser
 from django import forms
 
@@ -24,10 +26,38 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
 
-class CustomUserChangeForm(UserChangeForm):
+class CustomUserChangeForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ['name','surname','middlename','city','age','photo']
+
+        widgets = {
+            "name": TextInput(attrs={
+                'class': 'text-field__input',
+                'placeholder': 'Имя'
+            }),
+            "surname": TextInput(attrs={
+                'class': 'text-field__input',
+                'placeholder': 'Фамилия'
+            }),
+            "middlename": TextInput(attrs={
+                'class': 'text-field__input',
+                'placeholder': 'Отчество'
+            }),
+            "city": TextInput(attrs={
+                'class': 'text-field__input',
+                'placeholder': 'Город'
+            }),
+            "age": TextInput(attrs={
+                'class': 'text-field__input',
+                'placeholder': 'Возраст'
+            }),
+            "photo": FileInput(attrs={
+                'class': '',
+                'placeholder': 'Фото профиля'
+            })
+        }
+
 class CustomAuthenticationForm(AuthenticationForm):
 
     username = forms.CharField(

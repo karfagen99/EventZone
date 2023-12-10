@@ -1,9 +1,11 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin, messages
-from users.forms import CustomUserCreationForm, CustomAuthenticationForm
+from users.forms import CustomUserCreationForm, CustomAuthenticationForm, CustomUserChangeForm
+from users.models import CustomUser
 
 
 class SignUpView(CreateView):
@@ -52,3 +54,31 @@ class LoginUser(SuccessMessageMixin, LoginView):
 
     def get_success_url(self):
         return reverse_lazy('profile')
+
+class ProfileUpdate(UpdateView):
+    model = CustomUser
+    success_url = reverse_lazy('profile')
+    form_class = CustomUserChangeForm
+
+    def form_valid(self, form):
+        messages.success(self.request,"Обновлено")
+        return super(ProfileUpdate, self).form_valid(form)
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+def changeProfile(request):
+    error = ''
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return  redirect('profile')
+        else:
+            error = 'Проверьте данные'
+    form = CustomUserChangeForm()
+    data = {
+        'form': form,
+        'error': error
+    }
+    return render(request,'main/customuser_form.html',data)

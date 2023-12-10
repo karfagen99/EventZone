@@ -22,7 +22,7 @@ class agency(models.Model):
         verbose_name_plural = 'Агентства'
 
 class solutions(models.Model):
-    title = models.CharField(max_length=30, verbose_name='Название решения')
+    title = models.CharField(max_length=300, verbose_name='Название решения')
     description = models.CharField(max_length=600, verbose_name='Описание')
     picture = models.ImageField(upload_to='images/', verbose_name='Фото', blank=True, null=True)
 
@@ -56,7 +56,7 @@ class plans(models.Model):
         verbose_name_plural = 'Тарифы'
 
 class services(models.Model):
-    title = models.CharField(max_length=30, verbose_name='Название услги')
+    title = models.CharField(max_length=300, verbose_name='Название услги')
 
     def __str__(self):
         return self.title
@@ -95,7 +95,7 @@ class gallery(models.Model):
 
 
     def __str__(self):
-        return str(self.agent) + ' ' + str(self.contractors) + ' ' + self.description
+        return str(self.agent) + ' ' + str(self.contractors) + ' ' +  ' ' + str(self.solution) + ' ' +self.description
     class Meta:
         verbose_name = 'Галлерея'
         verbose_name_plural = 'Галлерея'
